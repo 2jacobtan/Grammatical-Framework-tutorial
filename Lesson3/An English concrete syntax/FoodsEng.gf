@@ -41,18 +41,18 @@ concrete FoodsEng of Foods = open Prelude in {
         }
       } ;
 
+    sForm : Str -> Str = \w ->
+      case w of {
+        _ + ("a" | "e" | "i" | "o") + "o" => w + "s" ;  -- bamboo
+        _ + ("s" | "x" | "sh" | "o")      => w + "es" ; -- bus, hero
+        _ + "z"                           => w + "zes" ;-- quiz
+        _ + ("a" | "e" | "o" | "u") + "y" => w + "s" ;  -- boy
+        x + "y"                           => x + "ies" ;-- fly
+        _                                 => w + "s"    -- car
+        } ;
+
     regNoun : Str -> Noun = \w ->
-      let
-        ws : Str = case w of {
-          _ + ("a" | "e" | "i" | "o") + "o" => w + "s" ;  -- bamboo
-          _ + ("s" | "x" | "sh" | "o")      => w + "es" ; -- bus, hero
-          _ + "z"                           => w + "zes" ;-- quiz
-          _ + ("a" | "e" | "o" | "u") + "y" => w + "s" ;  -- boy
-          x + "y"                           => x + "ies" ;-- fly
-          _                                 => w + "s"    -- car
-          }
-      in
-      mkNoun w ws ;      
+      mkNoun w (sForm w);      
 
     -- regNoun : Str -> {s : Number => Str} =
     --   \car -> mkNoun car (car + "s") ;
