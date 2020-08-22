@@ -97,4 +97,13 @@ concrete FoodsEng of Foods = open Prelude in {
         Sg => "is" ;
         Pl => "are"
         } ;
+
+    umlaut : Str -> Str = \w ->
+      case w of {
+        -- Added a 'z' because Windows Powershell fails to display accent.
+        start + "a" + end => start + "äz" + end ;
+        start + "o" + end => start + "öz" + end ;
+        start + "u" + end => start + "üz" + end ;
+        _ => w -- default (no change)
+      } ;
   }
