@@ -25,9 +25,11 @@ concrete FoodsEng of Foods = open Prelude in {
     Boring = ss "boring" ;
   param
     Number = Sg | Pl ;
+    Tense = Pr | Pr3 | PrPart | Pst | PstPart ;
 
   oper
     Noun : Type = {s: Number => Str} ;
+    Verb : Type = {s: Tense => Str} ;
 
     det : Number -> Str -> {s : Number => Str} -> {s : Str ; n : Number} =
       \n,d,cn -> {
@@ -41,6 +43,16 @@ concrete FoodsEng of Foods = open Prelude in {
         }
       } ;
 
+    mkVerb : Str -> Str -> Str -> Str -> Str -> {s : Tense => Str} =
+      \drink,drinks,drinking,drank,drunk -> {s = table {
+        Pr => drink ;
+        Pr3 => drinks ;
+        PrPart => drinking ;
+        Pst => drank ;
+        PstPart => drunk
+        }
+      } ;
+
     sForm : Str -> Str = \w ->
       case w of {
         _ + ("a" | "e" | "i" | "o") + "o" => w + "s" ;  -- bamboo
@@ -51,8 +63,31 @@ concrete FoodsEng of Foods = open Prelude in {
         _                                 => w + "s"    -- car
         } ;
 
+    prPart : Str -> Str = \w ->
+      case w of {
+        _ + ("pp") => w + "ing" ; -- no need extra 'p' if already double
+        _ + "p" => w + "ping" ; -- tripping
+        _ => w + "ing"
+      } ;
+
+    pst : Str -> Str = \w ->
+      case w of {
+        _ + ("pp") => w + "ed" ; -- no need extra 'p' if already double
+        _ + "p" => w + "ped" ; -- tripped
+        _ => w + "ed"
+      } ;
+    
+    -- not yet implemented
+    pstPart : Str -> Str = \w ->
+      case w of {
+        _ => w + "ed"
+      } ;
+
     regNoun : Str -> Noun = \w ->
-      mkNoun w (sForm w);      
+      mkNoun w (sForm w) ;
+
+    regVerb : Str -> Verb = \w ->
+      mkVerb w (sForm w) (prPart w) (pst w) (pstPart w) ;
 
     -- regNoun : Str -> {s : Number => Str} =
     --   \car -> mkNoun car (car + "s") ;
