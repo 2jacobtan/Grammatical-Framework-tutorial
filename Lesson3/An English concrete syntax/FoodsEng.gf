@@ -43,15 +43,28 @@ concrete FoodsEng of Foods = open Prelude in {
         }
       } ;
 
-    mkVerb : Str -> Str -> Str -> Str -> Str -> {s : Tense => Str} =
-      \drink,drinks,drinking,drank,drunk -> {s = table {
-        Pr => drink ;
-        Pr3 => drinks ;
-        PrPart => drinking ;
-        Pst => drank ;
-        PstPart => drunk
-        }
-      } ;
+    mkVerb = overload {
+      mkVerb : Str -> {s : Tense => Str} =
+        \walk -> {s = table {
+            Pr => walk ;
+            Pr3 => walk + "s" ;
+            PrPart => walk + "ing" ;
+            Pst => walk + "ed" ;
+            PstPart => walk + "ed"
+          }
+        } ;
+
+      mkVerb : Str -> Str -> Str -> Str -> Str -> {s : Tense => Str} =
+        \drink,drinks,drinking,drank,drunk -> {s = table {
+          Pr => drink ;
+          Pr3 => drinks ;
+          PrPart => drinking ;
+          Pst => drank ;
+          PstPart => drunk
+          }
+        } ;
+    } ;
+
 
     sForm : Str -> Str = \w ->
       case w of {
