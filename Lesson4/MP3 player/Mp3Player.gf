@@ -1,5 +1,8 @@
 abstract Mp3Player = {
+  flags startcat = Utterance ;
+
   cat
+    Utterance ;
     Command ;
     Verb2 ; -- transitive
     Obj ;
@@ -8,6 +11,7 @@ abstract Mp3Player = {
     Item ; -- Determ + Obj
 
   fun
+    CommandToUtterance : Command -> Utterance ;
     Verb2ItemToCommand : Verb2 -> Item -> Command ;
     Verb1ToCommand : Verb1 -> Command ;
     DetermObjToItem : Determ -> Obj -> Item ;

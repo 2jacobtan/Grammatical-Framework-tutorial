@@ -1,5 +1,6 @@
 incomplete concrete Mp3PlayerI of Mp3Player = open Syntax, Lexicon, LexMp3Player in {
   lincat
+    Utterance = Utt ;
     Command = VP ;
     Verb2 = V2 ;
     Obj = N ;
@@ -8,6 +9,9 @@ incomplete concrete Mp3PlayerI of Mp3Player = open Syntax, Lexicon, LexMp3Player
     Item = NP ; -- Det + Obj
 
   lin
+    -- CommandToUtterance : Command -> Utterance
+    CommandToUtterance command = mkUtt (mkImp command) ;
+
     -- Verb2ItemToCommand : Verb2 -> Item -> Command ;
     Verb2ItemToCommand = mkVP ;
 
