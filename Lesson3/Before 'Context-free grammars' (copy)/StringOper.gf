@@ -30,4 +30,9 @@ resource StringOper = {
         Sg => "is" ;
         Pl => "are"
         } ;
+      
+    tableTest : Number => Str = table {
+        Sg => "dog" ;
+        Pl => "dogs"
+        } ;
 }

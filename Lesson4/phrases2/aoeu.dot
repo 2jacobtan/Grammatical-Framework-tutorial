@@ -1,0 +1,28 @@
+graph {
+edge[style="solid"]; node[shape="plaintext"]; 
+subgraph {rank=same;
+  n0[label="Phrase"]; 
+}
+ 
+edge[style="dashed"]; node[shape="plaintext"]; 
+subgraph {rank=same;
+  n100000[label="which"]; 
+  n100001[label="languages"]; 
+  n100002[label="did"]; 
+  n100003[label="you"]; 
+  n100004[label="want"]; 
+  n100005[label="to"]; 
+  n100006[label="speak"]; 
+  edge[style="invis"]; 
+  n100000  --  n100001  --  n100002  --  n100003  --  n100004  --  n100005  --  n100006 ;
+}
+n0 -- n100000;
+n0 -- n100001;
+n0 -- n100002;
+n0 -- n100003;
+n0 -- n100004;
+n0 -- n100005;
+n0 -- n100006;
+ 
+}
+

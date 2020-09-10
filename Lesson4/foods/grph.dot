@@ -1,0 +1,12 @@
+graph {
+n0[label = "Is : Phrase", style = "solid", shape = "plaintext"] ;
+n0_0[label = "That : Item", style = "solid", shape = "plaintext"] ;
+n0 -- n0_0 [style = "solid"];
+n0_0_0[label = "Pizza : Kind", style = "solid", shape = "plaintext"] ;
+n0_0 -- n0_0_0 [style = "solid"];
+n1_0[label = "Very : Quality", style = "solid", shape = "plaintext"] ;
+n0 -- n1_0 [style = "solid"];
+n0_1_0[label = "Expensive : Quality", style = "solid", shape = "plaintext"] ;
+n1_0 -- n0_1_0 [style = "solid"];
+}
+
