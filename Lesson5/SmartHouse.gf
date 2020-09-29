@@ -17,18 +17,4 @@ abstract SmartHouse = {
 
     switchOn, switchOff : (k : Kind) -> Action k ;
 
-    cat Nat ;
-    fun
-      Zero : Nat ;
-      Succ : Nat -> Nat ;
-    
-    cat Less Nat Nat ;
-    fun
-      lessZ : (y : Nat) -> Less Zero (Succ y) ;
-      lessS : (x,y : Nat) -> Less x y -> Less (Succ x) (Succ y) ;
-
-    --  lessS 1 3
-    --       (lessS 0 2 (lessZ 1))
-    --  : Less 2 4
-
 }
