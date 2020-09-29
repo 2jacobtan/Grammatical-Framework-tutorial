@@ -8,7 +8,7 @@ concrete SmartHouseEng of SmartHouse = open Prelude in {
     CAction _ act dev = {s = act.s ++ dev.s} ;
     light = "light" ;
     fan = "fan" ;
-    dim  _ _ = ss "dim" ;
+    dim _ x = ss2 "dim" x;
 
     DKindOne k = ss2 "the" k ;
 
