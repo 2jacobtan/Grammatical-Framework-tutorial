@@ -2,6 +2,7 @@ concrete SmartHouseEng of SmartHouse = open Prelude in {
   lincat
     Command, Action, Device = SS ;
     Kind = Str ;
+    Switchable, Dimmable = Str ;
   
   lin
     CAction _ act dev = {s = act.s ++ dev.s} ;
@@ -11,8 +12,8 @@ concrete SmartHouseEng of SmartHouse = open Prelude in {
 
     DKindOne k = ss2 "the" k ;
 
-    switchOn _ _ = ss "switch on" ;
-    switchOff _ _ = ss "switch off" ;
+    switchOn _ x = ss2 "switch on" x;
+    switchOff _ x = ss2 "switch off" x;
 
-    dimmable_light, switchable_fan, switchable_light = ss "";
+    dimmable_light, switchable_fan, switchable_light = "";
 }
