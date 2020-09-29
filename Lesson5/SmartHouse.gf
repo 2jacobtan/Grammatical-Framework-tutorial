@@ -14,4 +14,6 @@ abstract SmartHouse = {
     dim : Action light ;
     
     DKindOne : (k : Kind) -> Device k ; -- the light
+
+    switchOn, switchOff : (k : Kind) -> Action k ;
 }
